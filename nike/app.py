@@ -1,115 +1,13 @@
 import requests
-import json
 
-url = "https://product-proxy-v2.adtech-prod.nikecloud.com/products"
+url = "https://api.nike.com/cic/browse/v2?queryid=products&anonymousId=4BDA24CABADC363265C54C3502599558&country=us&endpoint=%2Fproduct_feed%2Frollup_threads%2Fv2%3Ffilter%3Dmarketplace(US)%26filter%3Dlanguage(en)%26filter%3DemployeePrice(true)%26searchTerms%3Dsneakers%26anchor%3D24%26consumerChannelId%3Dd9a5bc42-4b9c-4976-858a-f159cf99c647%26count%3D24&language=en&localizedRangeStr=%7BlowestPrice%7D%20%E2%80%94%20%7BhighestPrice%7D"
 
-payload = json.dumps({
-  "experienceProducts": [
-    {
-      "cloudProductId": "eb0949f4-7f19-5b6a-9631-6f779b3369f1",
-      "currentPrice": 190
-    },
-    {
-      "cloudProductId": "89f203c5-b169-531f-be87-fd77f4105f90",
-      "currentPrice": 180
-    },
-    {
-      "cloudProductId": "37c841d0-caed-5aa1-8125-928fcda25ed0",
-      "currentPrice": 150
-    },
-    {
-      "cloudProductId": "7ad40567-879e-5999-8f55-9743de13ccd4",
-      "currentPrice": 140
-    },
-    {
-      "cloudProductId": "0d06a88a-6606-57cb-8dfd-afec9494a8f6",
-      "currentPrice": 200
-    },
-    {
-      "cloudProductId": "e57c5228-fab9-563f-8113-3412f6d6d24b",
-      "currentPrice": 200
-    },
-    {
-      "cloudProductId": "30694dee-8fb4-5e23-a8be-02dc261bc7b0",
-      "currentPrice": 110
-    },
-    {
-      "cloudProductId": "8c60b5ca-e612-5b86-a094-2532aa3b68c6",
-      "currentPrice": 130
-    },
-    {
-      "cloudProductId": "e5469991-fb4d-5e1b-aa3d-f9f5f0dc7b31",
-      "currentPrice": 135
-    },
-    {
-      "cloudProductId": "a07b42af-7069-58c6-8519-d7f85f654082",
-      "currentPrice": 125
-    },
-    {
-      "cloudProductId": "54c97ad5-3e2d-579f-9071-fb0053162774",
-      "currentPrice": 160
-    },
-    {
-      "cloudProductId": "24a8c897-06be-588a-ba3b-1e5676a41505",
-      "currentPrice": 150
-    },
-    {
-      "cloudProductId": "0ef6f73f-055c-556f-973f-4e587c0d718f",
-      "currentPrice": 130
-    },
-    {
-      "cloudProductId": "bf7e117f-6b7b-55c2-a6f1-dd1389f5dbbf",
-      "currentPrice": 140
-    },
-    {
-      "cloudProductId": "cc723357-7ce6-5b07-89b2-ee349c91485f",
-      "currentPrice": 105
-    },
-    {
-      "cloudProductId": "cf9be361-6d7a-5afe-86e7-716479d4a121",
-      "currentPrice": 105
-    },
-    {
-      "cloudProductId": "09e0d404-f3f8-5b1e-a504-6baf88ac59cf",
-      "currentPrice": 210
-    },
-    {
-      "cloudProductId": "94d3987e-b47f-508a-afcd-47b230eccc7d",
-      "currentPrice": 210
-    },
-    {
-      "cloudProductId": "18251c5a-5cd4-5465-8929-041df08d9d1c",
-      "currentPrice": 165
-    },
-    {
-      "cloudProductId": "c5aec9ef-e0d5-531b-9625-a2673bcb1dfa",
-      "currentPrice": 130
-    },
-    {
-      "cloudProductId": "22a7c9f1-2b8b-51aa-8794-a6ffc525ac61",
-      "currentPrice": 110
-    },
-    {
-      "cloudProductId": "9ddb5691-5264-5682-91b4-d4f0629a1c73",
-      "currentPrice": 110
-    },
-    {
-      "cloudProductId": "7e6a2e4c-3575-528f-bbf2-24d7cf723cc2",
-      "currentPrice": 160
-    },
-    {
-      "cloudProductId": "055a4593-fd17-5602-9b0f-3833f048fca9",
-      "currentPrice": 180
-    }
-  ],
-  "country": "us"
-})
 headers = {
-  'authority': 'product-proxy-v2.adtech-prod.nikecloud.com',
+  'authority': 'api.nike.com',
   'accept': '*/*',
   'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
   'cache-control': 'no-cache',
-  'content-type': 'application/json',
+  'cookie': 'AnalysisUserId=2.17.35.103.162441661528390989; geoloc=cc=NG,rc=,tp=vhigh,tz=GMT+1,la=6.45,lo=3.40; s_ecid=MCMID%7C30765560244911791645617054311885057217; AMCVS_F0935E09512D2C270A490D4D%40AdobeOrg=1; AMCV_F0935E09512D2C270A490D4D%40AdobeOrg=1994364360%7CMCMID%7C30765560244911791645617054311885057217%7CMCAID%7CNONE%7CMCOPTOUT-1661535610s%7CNONE%7CvVersion%7C3.4.0; CONSUMERCHOICE_SESSION=t; anonymousId=4BDA24CABADC363265C54C3502599558; guidS=a7732c7f-ce66-41b5-c074-7a1291fba652; guidU=7abee57f-4bd9-47f7-bf4b-4cf771ee37fc; RES_TRACKINGID=177063899674295; ResonanceSegment=1; _gcl_au=1.1.1052584455.1661528616; _ga_EWJ8FE8V0B=GS1.1.1661528619.1.0.1661528619.60.0.0; _scid=0e13098d-ddfe-4f2c-9452-5358cc66130b; _uetvid=21039f70e44911ec8e5b277899d64d47; bc_nike_south_africa_triggermail=%7B%22distinct_id%22%3A%20%22181308368b35a3-05651c99bdca38-26021b51-100200-181308368b4175%22%2C%22bc_persist_updated%22%3A%201661528622482%2C%22cart_total%22%3A%200%7D; _fbp=fb.1.1661528633125.2110745594; _derived_epik=dj0yJnU9Q05vU2pnb3k2WFliUzlGRl9iaDNTOHd0Y2NSNHdUTDImbj0zNFJRY1JhZkhhUFJEcWR5S2NzNzdnJm09MSZ0PUFBQUFBR01JNmxnJnJtPTEmcnQ9QUFBQUFHTUk2bGc; _pin_unauth=dWlkPU9HTTVaV1JpTnpndE1qY3laaTAwTVdSbExXRmhObVV0WXpkbVl6WXlObVkwWmpFNQ; optimizelyEndUserId=oeu1661537925297r0.42743005943276535; NIKE_COMMERCE_COUNTRY=US; NIKE_COMMERCE_LANG_LOCALE=en_US; nike_locale=us/en_us; CONSUMERCHOICE=us/en_us; cid=undefined%7Cundefined; AKA_A2=A; feature_enabled__as_nav_rollout=true; audience_segmentation_performed=true; bm_sz=21602494DA0804B96A21AE91F88B493A~YAAQXCMRAlDFBsmCAQAAX9Qm8BDUubc1KrnWUSnjepw7ZS8R0GjH+pLvcf6ky8+TKjNASwKBXB4rPjauCvbY98h0Dlypabn/OxjSP+fxMfi9ATaA8P8GGCdUhIVmu8NrqpCvoXmbHU9OkYfaG7SAklYQAj0YsagWxgP9Tr6dJVRrF5S7BWI+mqeOlGDOCKde37INU7SUyOt8q7cjv8skn85M+WfDTet8FXoDs0RQ3ZSAq1ZYaP/BKENjzjNZnq+r34RjwJVVPMRZgxuQ08pW4kUrYyWZDIca0bGRxbECj0zR5udkILu7UMkmU+4nTU/WnFVSgssLA2ekqnC9OgcfsA39SqISO/LluKGG+5qqeIXtGvUpC24inQYoEkaA16+FEW6FWL/pGTTsMDibg8VDf50=~3359028~3359792; bm_mi=963E606A63E2FBFCE06DF631EBD2ADCE~YAAQdNMRAv1s3cqCAQAAyAwn8BCHuTcH25gVE5/l3JWkiRuRo0/dUUmvgHUcmW4aMnnWopGY61qjc6oFFvNxnGblt7Xl/kp9yfY2+jVVGW4sX5TY8c6ps8ku3uxIWZ3vj7yQ6M50K8UtDlhIjWPar4DpZWvp2y5iAQMGE4sVGIPpxlM87o30kjCrkPr8c++pdp3hz9EtJXvGVn+UZumh5tC4sklFjWomfC9xBRBlMZ7dI/rulsNdtY0JUOotCvshFmUpfkENZvQyaNzzmj5zkA4pHG9n6m6IDpfFyKHugbZURvxId6xx7E9f/Lp0kFUZM/RJU6swIg==~1; ak_bmsc=E4FF74964815637F69687282269A214D~000000000000000000000000000000~YAAQdNMRArht3cqCAQAAphIn8BAv7DN+N0oFX5zMpaW1uboI2B/exnACLB7OfK59z8np9tzRkp5ShDtDPAxj4GEa60I834UfLb+UxD7lLopvmJSXCIrGnYS9AK/CUqRXhHYcFYikl9UwUYCnlGhx2oOh8MdGDZqiNimYB4v/6GLOv6YbLq7J9MBVJ19O3VRTSrky9DUs3H4gIgmScDtByEpvjD99qeGH0aPtrsNVa/phrj5J4Rmdn9guBvVKXmzlzEWttghCUJ1aqg7PEJrUQhe4uEtWQmipz5JsqjosLvZi9M4+qj1m/WX2LvMcV971RsC+e3fOfjOLja/XsCnrR+p3BueES5AJzGX17am+EzI15IS7e5CGWZEmG7kSJZ5KucGP197pds+cqZxDItArQmSBllNS/ZwONHJLayUILXklYYVHLRo1IK8SGBdi3UvzjOcJwcHBf7x0JEsWiyWaNagc9eyoqZ9SIopi0umbp//ILhs4nibr93Nw/n/dYcjo9ZCGw47HMeI7+lqe; _gid=GA1.2.1491211993.1661886491; ak_bmsc_nke-2.2-ssn=09vL9KIQgz9XpARGetLM5MbpOhKOsDp864QlvunLmNKRX1pHJaS3qBPrZguUAofaTemojSDALINRYZJ1k0jt6Uu6bH1wsOblkKqE3yHju68phLA7FAgAs4z73TxxpR1QENnjPTnH5iZdVp9W8Yot3FL3T3FP; ak_bmsc_nke-2.2=09vL9KIQgz9XpARGetLM5MbpOhKOsDp864QlvunLmNKRX1pHJaS3qBPrZguUAofaTemojSDALINRYZJ1k0jt6Uu6bH1wsOblkKqE3yHju68phLA7FAgAs4z73TxxpR1QENnjPTnH5iZdVp9W8Yot3FL3T3FP; ppd=onsite%20search|nikecom>onsite%20search>results%20found; RT="z=1&dm=nike.com&si=6cbe15e7-0396-41f5-96be-7db73f88bf3c&ss=l7gkxwcm&sl=5&tt=2g64&obo=1&bcn=%2F%2F0217990f.akstat.io%2F&ld=zhn"; bm_sv=F7A386DC50C0F2B50F25D8EFAC35EA92~YAAQXCMRAmyECMmCAQAAYXs48BCDKDE8jIa4XShwlx3AvIi52Ik8dfzQxDyeOPYBZ6K/K43saC6yleW+6dfz6dDWU9ByFUPPLh/ZVLjzzJv4RR/Lo3j3POeGfK2glzu058ZeIumJf00UEKX+GReHvMBQZoYnS5i7Upc61ToEK4esZi503uKmH86K/VSBzm73wyoyHK6rngiJOgdjdTCLb37Ua7euVnWsHgK8HRhL63hoS0yapHgZtxDgJwRJbLU=~1; _ga=GA1.1.831967198.1661528619; _ga_QTVTHYLBQS=GS1.1.1661886494.4.1.1661887615.59.0.0; bc_nike_triggermail=%7B%22distinct_id%22%3A%20%22181308368b35a3-05651c99bdca38-26021b51-100200-181308368b4175%22%2C%22bc_persist_updated%22%3A%201661558814075%2C%22cart_total%22%3A%200%2C%22g_search_engine%22%3A%20%22google%22%7D; cto_bundle=-NZR6F9PQ0NKRUdnSGM5JTJGWWYwcjd5eld5OGV6cllMYUg1d1JRUVhocnI5V1ZmcVh3Q29qbkQ2ZUdSSXJwcUdOdjBxRnRVRzBPd3ZpJTJGMDZ6OE81MHQyVDRaQXRYMjFNN1R3STVycjg5QzhGUTVJVFFTdVF4Sm9ycXJNRG5KRDk5dHA5cGtHODVIUTRwbnpRaDFuV2V4bHNWWkF3JTNEJTNE; _abck=303E7C53F86665F74B2B6E5716887EFD~-1~YAAQRm9WaCZPvM2CAQAAxzs68AiC5hTjM0gbQRBuGztf8h1Q1wI8Dz3bUZXd3T7mJXO1ek1EE8QpvrkH/v/gxnKtn/Yv8g61pHUivawy1cEYvKNIWAHCvCxBgRpeIKZVGGNPHmPH0cGspEgLSd1RGcEMqh3+We7DI2nJOGKxtySU4xfZvDxbNDdHAn3NgPsBfxT7O9GI8fpfwsnNOTzzhqLbvM9t6sISDUFvniRkiRogR1dibY04O8S5XwlVD0nB/n6USP2wPtK0LqS1F35ge8ToJcLL0qUJ6ror610Yy4rBTYVizDPpe0JTKHu+6g9Qd+wh3dm61c7DkR20Sigo2ztu4INkpHP2fxcFnQeKIhvWgzknnSq9JZG4zgdly623U/T2pwekmcEt7LyHOSGx+Sc+7gcjpXR7GlQRomS+1B8Y1cZ+XidErRPaNBOpVJPb0rPMVsXWH3uwvvjy5gFmeLTBMLUp8iYIEIhek6Pf/foD7v4OgxOs2O0OiPDIO1ITmSbqZvaoE74+2Fcr++SCV3yTmq5W+O8=~-1~-1~-1; _abck=303E7C53F86665F74B2B6E5716887EFD~-1~YAAQztMRAtDM4siCAQAAYoQ78AiD1KYTKexjfC4XTDdb08OAS0fwQqpGs/snWXyh/Hb5zyk5rusfdqqaHvzoM9q195ZT3R4gEyRs7wmO+EaCOLoetmpYlRJcKeVEcNonKMVYEvDD2jNXd4bHkQeIsm+xG0eJVaQsxTC43zZFan09QcMv3763xubaRY5cCFsUoW5LPOV1viTSmeiqY7GSsY/GIXiQSHs6rxVXbZEiKPEUaDN415Fn1wpoM2inPOXZHvfBcK4HTTHysCaBJXcoz7PG2/hyuf4xM94ClJVMSFmkeSILcjCKWWem2T4IkbmDMuWJYSAsbrZhjsejlNSKFMvEilV9Sw1XVEgBx/LYQA+PSK3m1zczXeMHHCBAnQWSnb9ONj16v+8anXAy+EnBJKalN3T4mJEIpvUylK6+3lrBQMZOP/rGODY25cqdT/Y7bxOJBY+/jYBYaYlaGaalHqJdlWQms2kqWfFYkN6kc1fgWhWQ4Zr/15Y+1oI/AwibHqd1lb72ezmjvJp5P4rLDTex9rgaUGI=~0~-1~-1',
   'origin': 'https://www.nike.com',
   'pragma': 'no-cache',
   'referer': 'https://www.nike.com/',
@@ -118,10 +16,10 @@ headers = {
   'sec-ch-ua-platform': '"Windows"',
   'sec-fetch-dest': 'empty',
   'sec-fetch-mode': 'cors',
-  'sec-fetch-site': 'cross-site',
+  'sec-fetch-site': 'same-site',
   'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'
 }
 
-response = requests.post(url, headers=headers, data=payload)
+response = requests.get(url, headers=headers)
 
 print(response.text)
