@@ -1,11 +1,11 @@
 import json
 import requests
 from datetime import datetime
-import logging
+# import logging
 
-import logging
+# import logging
 
-logging.basicConfig(filename='data.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+# logging.basicConfig(filename='data.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
 
 
 headers = {
@@ -28,16 +28,19 @@ headers = {
 
 count = 60
 step = 1
-
-for anchor in range(60, 1440, 60):
+# 60, 1440, 60
+for anchor in range(60, 120, 60):
     url = f"https://api.nike.com/cic/browse/v2?queryid=products&anonymousId=4BDA24CABADC363265C54C3502599558&country=us&endpoint=%2Fproduct_feed%2Frollup_threads%2Fv2%3Ffilter%3Dmarketplace(US)%26filter%3Dlanguage(en)%26filter%3DemployeePrice(true)%26searchTerms%3Dsneakers%26anchor%3D{anchor}%26consumerChannelId%3Dd9a5bc42-4b9c-4976-858a-f159cf99c647%26count%3D{count}&language=en&localizedRangeStr=%7BlowestPrice%7D%20%E2%80%94%20%7BhighestPrice%7D"
 
-    logging.info(f'Start : Anchor {anchor}')
+    print(f'Start : Anchor {anchor}')
     response = requests.get(url, headers=headers)
-
+    result = response.text
+    print(type(result))
+  
     filename = f"{datetime.now().strftime('%d-%m-%Y')}-anchor-{anchor}.json"
-    with open(f"/workspaces/Data-Engineering/nike/data/{filename}", "w") as f:
-        json.dump(response.text, f)
+    with open(f"/workspaces/Data-Engineering/nike/data/{filename}", "w", encoding='utf-8') as f:
+        json.dump(result, f)
 
-    logging.info(f'Step {step} Done!!!')
+    print(f'Step {step} Done!!!')
+    
     step += 1
