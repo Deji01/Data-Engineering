@@ -1,12 +1,16 @@
 import scrapy
 from ..items import ShoesItem
 from scrapy.loader import ItemLoader
-from datetime import datetime
+# from datetime import datetime
 
 class SolesupplierSpider(scrapy.Spider):
     name = 'solesupplier'
     allowed_domains = ['thesolesupplier.co.uk']
-    start_urls = ['https://thesolesupplier.co.uk/release-dates/?q=low%20dunk']
+    start_urls = ['https://thesolesupplier.co.uk/release-dates/?q=dunk']
+
+    links = [f'https://thesolesupplier.co.uk/release-dates/?page={i}&q=dunk' for i in range(2, 44)]
+    for link in links:
+        start_urls.append(link)
 
     def parse(self, response):
         for div in response.css("#main-content > div > div.advanced-listing-view > div.desktop-flex.advanced-listing-view__wrapper > section.md-10.advanced-listing-view__feed > div > article "):
