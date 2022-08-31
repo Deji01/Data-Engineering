@@ -1,17 +1,13 @@
-# Define here the models for your scraped items
-#
-# See documentation in:
-# https://docs.scrapy.org/en/latest/topics/items.html
-
+from itemloaders.processors import MapCompose, TakeFirst
+from w3lib.html import remove_tags
 import scrapy
 
-
 class ShoesItem(scrapy.Item):
-    product_title = scrapy.Field()
-    stock_status = scrapy.Field()
-    release_date = scrapy.Field()
-    price = scrapy.Field()
-    brand = scrapy.Field()
-    model = scrapy.Field()
-    style_code = scrapy.Field()
-    image_url = scrapy.Field()
+    product_title = scrapy.Field(input_processor = MapCompose(remove_tags),output_processor = TakeFirst())
+    stock_status = scrapy.Field(input_processor = MapCompose(remove_tags),output_processor = TakeFirst())
+    release_date = scrapy.Field(input_processor = MapCompose(remove_tags),output_processor = TakeFirst())
+    price = scrapy.Field(input_processor = MapCompose(remove_tags),output_processor = TakeFirst())
+    brand = scrapy.Field(input_processor = MapCompose(remove_tags),output_processor = TakeFirst())
+    model = scrapy.Field(input_processor = MapCompose(remove_tags),output_processor = TakeFirst())
+    style_code = scrapy.Field(input_processor = MapCompose(remove_tags),output_processor = TakeFirst())
+    image_url = scrapy.Field(output_processor = TakeFirst())
