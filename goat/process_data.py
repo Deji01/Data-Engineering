@@ -79,7 +79,7 @@ def transform(file):
         image_url = product["data"]["image_url"]
         used_image_url = product["data"]["used_image_url"]
 
-        return (
+        yield (
             date,
             matched_terms,
             id,
