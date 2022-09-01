@@ -50,3 +50,6 @@ def extract():
         print(f"Step {step} Done!!!")
 
         step += 1
+
+if __name__ == "__main__":
+    extract()
