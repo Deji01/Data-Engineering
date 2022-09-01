@@ -42,7 +42,7 @@ def transform(file):
         squarish_url = product["images"]["squarishURL"]
         url = product["url"]
 
-        return (
+        yield (
             date,
             id,
             pid,
