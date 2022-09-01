@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 
+
 def transform(file):
     with open(file, "r") as f:
         data = json.load(f)
@@ -15,7 +16,7 @@ def transform(file):
         brand = product["brand"]
         colorway = product["colorway"]
         condition = product["condition"]
-        description = product["description"].replace("\n<br>","").replace("\n"," ")
+        description = product["description"].replace("\n<br>", "").replace("\n", " ")
         product_category = product["productCategory"]
         release_date = product["releaseDate"]
         retail_price = product["retailPrice"]
@@ -34,8 +35,8 @@ def transform(file):
         lastHighest_bid_time = product["market"]["lastHighestBidTime"]
         last_sale_date = product["market"]["lastSaleDate"]
         urlKey = product["urlKey"]
-        small_image_url = product["media"]['smallImageUrl']
-        thumb_url = product["media"]['thumbUrl']
+        small_image_url = product["media"]["smallImageUrl"]
+        thumb_url = product["media"]["thumbUrl"]
 
         yield (
             date,
