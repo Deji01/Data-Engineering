@@ -1,9 +1,6 @@
 import json
 from datetime import datetime
 
-file = "/workspaces/Data-Engineering/goat/data/goat-01-09-2022-file-1.json"
-
-
 def transform(file):
     with open(file, "r") as f:
         data = json.load(f)
