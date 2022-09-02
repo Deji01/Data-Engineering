@@ -5,5 +5,3 @@ db_name = os.environ["DB_NAME"]
 db_password = os.environ["DB_PASSWORD"]
 db_port = os.environ["DB_PORT"]
 db_user = os.environ["DB_USER"]
-
-print(db_host, db_name, db_password, db_port, db_user)

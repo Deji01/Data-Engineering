@@ -1,7 +1,6 @@
 import scrapy
 from ..items import ShoesItem
 from scrapy.loader import ItemLoader
-# from datetime import datetime
 
 class SolesupplierSpider(scrapy.Spider):
     name = 'solesupplier'
@@ -33,8 +32,7 @@ class SolesupplierSpider(scrapy.Spider):
             obj.add_css("brand", "article > div > div.product-footer > section > div:nth-child(3) > p::text")
             obj.add_css("model", "article > div > div.product-footer > section > div:nth-child(4) > p::text")
             obj.add_css("style_code", "article > div > div.product-footer > section > div:nth-child(5) > p::text")
-            # "date" : datetime.today()
-
+            
             yield obj.load_item()
             
             
