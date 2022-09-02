@@ -1,1 +1,2 @@
-scrapy
+psycopg2==2.9.3
+Scrapy==2.6.2
