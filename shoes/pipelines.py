@@ -56,7 +56,7 @@ class SaveToPostgreSQLPipeline(object):
                 product_title VARCHAR(255), 
                 stock_status VARCHAR(20), 
                 release_date VARCHAR(30), 
-                price(£) NUMERIC(10, 2), 
+                price NUMERIC(10, 2), 
                 brand VARCHAR(20), 
                 model VARCHAR(20),  
                 image_url VARCHAR(255) NOT NULL PRIMARY KEY
@@ -66,14 +66,13 @@ class SaveToPostgreSQLPipeline(object):
 
     def process_item(self, item, spider):
         self.store_db(item)
-        self.clean_db()
         return item
 
     def store_db(self, item):
         "Insert data into Database and commit changes"
 
         query = """
-                INSERT INTO sole_supplier (style_code, product_title, stock_status, release_date, price(£), brand, model, image_url)
+                INSERT INTO sole_supplier (style_code, product_title, stock_status, release_date, price, brand, model, image_url)
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                 """
         value = (
@@ -94,9 +93,7 @@ class SaveToPostgreSQLPipeline(object):
 
         self.connection.commit()
 
-    def clean_db(self):
-        "Clean Database"
-
+    def close_spider(self, spider):
         try:
             self.curr.execute(
                 """
@@ -107,7 +104,7 @@ class SaveToPostgreSQLPipeline(object):
                 ("Dunk", "^[a-zA-Z]{2,3}[0-9]{3,4}[-][0-9]{3,4}$"),
             )
         except BaseException as e:
-            print(e)
+            print(f"swap style code and model (1) : {e}")
 
         try:
             self.curr.execute(
@@ -119,7 +116,7 @@ class SaveToPostgreSQLPipeline(object):
                 ("Dunk", "^[0-9]{6}[-][0-9]{3,4}$"),
             )
         except BaseException as e:
-            print(e)
+            print(f"swap style code and model (2) : {e}")
 
         try:
             self.curr.execute(
@@ -131,7 +128,7 @@ class SaveToPostgreSQLPipeline(object):
                 ("Nike", "Dunk", "Dunk"),
             )
         except BaseException as e:
-            print(e)
+            print(f"Update Nike - Dunk : {e}")
 
         try:
             self.curr.execute(
@@ -142,20 +139,19 @@ class SaveToPostgreSQLPipeline(object):
                 ("Nike"),
             )
         except BaseException as e:
-            print(e)
+            print(f"Delete other brands : {e}")
 
         try:
             self.curr.execute(
                 """
                     DELETE FROM sole_supplier
-                    WHERE price(£) IS NULL;
+                    WHERE price IS NULL;
                     """
             )
         except BaseException as e:
-            print(e)
+            print(f"Delete products without price : {e}")
 
         self.connection.commit()
-
-    def close_spider(self, spider):
+        
         self.curr.close()
         self.connection.close()

@@ -3,7 +3,8 @@ from w3lib.html import remove_tags
 import scrapy
 
 def clean_price(value):
-        return round(float(value.replace("£", "")), 2)
+        conv_price = float(value.replace("£", "").replace(",", ""))
+        return round(conv_price, 2)
 
 class ShoesItem(scrapy.Item):
 
