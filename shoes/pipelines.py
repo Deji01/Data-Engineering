@@ -56,7 +56,7 @@ class SaveToPostgreSQLPipeline(object):
             product_title VARCHAR(255), 
             stock_status VARCHAR(20), 
             release_date VARCHAR(30), 
-            price VARCHAR(15), 
+            price(£) NUMERIC(10, 2), 
             brand VARCHAR(20), 
             model VARCHAR(20),  
             image_url VARCHAR(255) NOT NULL PRIMARY KEY
@@ -72,7 +72,7 @@ class SaveToPostgreSQLPipeline(object):
         "Insert data into Database and commit changes"
 
         query = """
-                INSERT INTO sole_supplier (style_code, product_title, stock_status, release_date, price, brand, model, image_url)
+                INSERT INTO sole_supplier (style_code, product_title, stock_status, release_date, price(£), brand, model, image_url)
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                 """
         value = (
