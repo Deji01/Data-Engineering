@@ -50,22 +50,23 @@ class SaveToPostgreSQLPipeline(object):
 
         self.curr.execute(
             """
-        CREATE TABLE IF NOT EXISTS sole_supplier (
-            date TIMESTAMPTZ NOT NULL DEFAULT NOW(), 
-            style_code VARCHAR(15),
-            product_title VARCHAR(255), 
-            stock_status VARCHAR(20), 
-            release_date VARCHAR(30), 
-            price(£) NUMERIC(10, 2), 
-            brand VARCHAR(20), 
-            model VARCHAR(20),  
-            image_url VARCHAR(255) NOT NULL PRIMARY KEY
+            CREATE TABLE IF NOT EXISTS sole_supplier (
+                date TIMESTAMPTZ NOT NULL DEFAULT NOW(), 
+                style_code VARCHAR(15),
+                product_title VARCHAR(255), 
+                stock_status VARCHAR(20), 
+                release_date VARCHAR(30), 
+                price(£) NUMERIC(10, 2), 
+                brand VARCHAR(20), 
+                model VARCHAR(20),  
+                image_url VARCHAR(255) NOT NULL PRIMARY KEY
             )
             """
         )
 
     def process_item(self, item, spider):
         self.store_db(item)
+        self.clean_db()
         return item
 
     def store_db(self, item):
@@ -90,6 +91,69 @@ class SaveToPostgreSQLPipeline(object):
 
         except BaseException as e:
             print(e)
+
+        self.connection.commit()
+
+    def clean_db(self):
+        "Clean Database"
+
+        try:
+            self.curr.execute(
+                """
+                    UPDATE sole_supplier 
+                    SET style_code = model , model = style_code
+                    WHERE model <> %s AND model ~ %s AND style_code is NULL;
+                    """,
+                ("Dunk", "^[a-zA-Z]{2,3}[0-9]{3,4}[-][0-9]{3,4}$"),
+            )
+        except BaseException as e:
+            print(e)
+
+        try:
+            self.curr.execute(
+                """
+                    UPDATE sole_supplier 
+                    SET style_code = model , model = style_code
+                    WHERE model <> %s AND model ~ %s AND style_code is NULL;
+                    """,
+                ("Dunk", "^[0-9]{6}[-][0-9]{3,4}$"),
+            )
+        except BaseException as e:
+            print(e)
+
+        try:
+            self.curr.execute(
+                """
+                    UPDATE sole_supplier 
+                    SET brand = %s , model = %s
+                    WHERE brand = %s;
+                    """,
+                ("Nike", "Dunk", "Dunk"),
+            )
+        except BaseException as e:
+            print(e)
+
+        try:
+            self.curr.execute(
+                """
+                    DELETE FROM sole_supplier
+                    WHERE brand <> %s;
+                    """,
+                ("Nike"),
+            )
+        except BaseException as e:
+            print(e)
+
+        try:
+            self.curr.execute(
+                """
+                    DELETE FROM sole_supplier
+                    WHERE price(£) IS NULL;
+                    """
+            )
+        except BaseException as e:
+            print(e)
+
         self.connection.commit()
 
     def close_spider(self, spider):
