@@ -52,14 +52,14 @@ class SaveToPostgreSQLPipeline(object):
             """
         CREATE TABLE IF NOT EXISTS sole_supplier (
             date TIMESTAMPTZ NOT NULL DEFAULT NOW(), 
-            style_code VARCHAR(15) NOT NULL PRIMARY KEY,
+            style_code VARCHAR(15),
             product_title VARCHAR(255), 
             stock_status VARCHAR(20), 
             release_date VARCHAR(30), 
-            price VARCHAR(15) NOT NULL, 
+            price VARCHAR(15), 
             brand VARCHAR(20), 
             model VARCHAR(20),  
-            image_url VARCHAR(255)
+            image_url VARCHAR(255) NOT NULL PRIMARY KEY
             )
             """
         )
@@ -87,10 +87,11 @@ class SaveToPostgreSQLPipeline(object):
         )
         try:
             self.curr.execute(query, value)
-            self.connection.commit()
 
         except BaseException as e:
             print(e)
+        self.connection.commit()
 
     def close_spider(self, spider):
+        self.curr.close()
         self.connection.close()

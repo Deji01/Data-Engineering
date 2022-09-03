@@ -63,8 +63,8 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'shoes.pipelines.ShoesPipeline': 100,
-   'shoes.pipelines.SaveToPostgreSQLPipeline': 200
+   'shoes.pipelines.SaveToPostgreSQLPipeline': 100,
+   'shoes.pipelines.ShoesPipeline': 200
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
