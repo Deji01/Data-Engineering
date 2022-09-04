@@ -94,64 +94,6 @@ class SaveToPostgreSQLPipeline(object):
         self.connection.commit()
 
     def close_spider(self, spider):
-        try:
-            self.curr.execute(
-                """
-                    UPDATE sole_supplier 
-                    SET style_code = model , model = style_code
-                    WHERE model <> %s AND model ~ %s AND style_code is NULL;
-                    """,
-                ("Dunk", "^[a-zA-Z]{2,3}[0-9]{3,4}[-][0-9]{3,4}$"),
-            )
-        except BaseException as e:
-            print(f"swap style code and model (1) : {e}")
-
-        try:
-            self.curr.execute(
-                """
-                    UPDATE sole_supplier 
-                    SET style_code = model , model = style_code
-                    WHERE model <> %s AND model ~ %s AND style_code is NULL;
-                    """,
-                ("Dunk", "^[0-9]{6}[-][0-9]{3,4}$"),
-            )
-        except BaseException as e:
-            print(f"swap style code and model (2) : {e}")
-
-        try:
-            self.curr.execute(
-                """
-                    UPDATE sole_supplier 
-                    SET brand = %s , model = %s
-                    WHERE brand = %s;
-                    """,
-                ("Nike", "Dunk", "Dunk"),
-            )
-        except BaseException as e:
-            print(f"Update Nike - Dunk : {e}")
-
-        try:
-            self.curr.execute(
-                """
-                    DELETE FROM sole_supplier
-                    WHERE brand <> %s;
-                    """,
-                ("Nike"),
-            )
-        except BaseException as e:
-            print(f"Delete other brands : {e}")
-
-        try:
-            self.curr.execute(
-                """
-                    DELETE FROM sole_supplier
-                    WHERE price IS NULL;
-                    """
-            )
-        except BaseException as e:
-            print(f"Delete products without price : {e}")
-
-        self.connection.commit()
-        
+            
         self.curr.close()
         self.connection.close()
