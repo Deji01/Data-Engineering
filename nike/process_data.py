@@ -1,49 +1,45 @@
 import json
-from datetime import datetime
-
 
 def transform(file):
     with open(file, "r") as f:
         data = json.load(f)
 
-    date = datetime.today().strftime("%d-%m-%Y")
-    search_term = data["data"]["products"]["pages"]["searchSummary"]["originalTerms"]
+    search_term = data["data"]["products"]["pages"]["searchSummary"].get("originalTerms")
 
     for product in data["data"]["products"]["products"]:
-        id = product["id"]
-        pid = product["pid"]
-        product_id = product["cloudProductId"]
-        product_instance_id = product["productInstanceId"]
-        product_type = product["producType"]
-        title = product["title"]
-        subtitle = product["subtitle"]
-        color_description = product["colorDescription"]
-        currency = product["price"]["currency"]
-        current_price = product["price"]["currentPrice"]
-        discounted = product["price"]["discounted"]
-        employee_price = product["price"]["employeePrice"]
-        full_price = product["price"]["fullPrice"]
-        minimum_advertised_price = product["price"]["minimumAdvertisedPrice"]
-        label = product["label"]
-        in_stock = product["inStock"]
-        is_coming_soon = product["isComingSoon"]
-        is_best_seller = product["isBestSeller"]
-        is_excluded = product["isExcluded"]
-        is_gift_card = product["isGiftCard"]
-        is_jersey = product["isJersey"]
-        is_launch = product["isLaunch"]
-        is_member_exclusive = product["isMemberExclusive"]
-        is_nba = product["isNBA"]
-        is_nfl = product["isNFL"]
-        is_sustainable = product["isSustainable"]
-        has_extended_sizing = product["hasExtendedSizing"]
-        customizable = product["customizable"]
-        portrait_url = product["images"]["portraitURL"]
-        squarish_url = product["images"]["squarishURL"]
-        url = product["url"]
+        id = product.get("id")
+        pid = product.get("pid")
+        product_id = product.get("cloudProductId")
+        product_instance_id = product.get("productInstanceId")
+        product_type = product.get("producType")
+        title = product.get("title")
+        subtitle = product.get("subtitle")
+        color_description = product.get("colorDescription")
+        currency = product["price"].get("currency")
+        current_price = product["price"].get("currentPrice")
+        discounted = product["price"].get("discounted")
+        employee_price = product["price"].get("employeePrice")
+        full_price = product["price"].get("fullPrice")
+        minimum_advertised_price = product["price"].get("minimumAdvertisedPrice")
+        label = product.get("label")
+        in_stock = product.get("inStock")
+        is_coming_soon = product.get("isComingSoon")
+        is_best_seller = product.get("isBestSeller")
+        is_excluded = product.get("isExcluded")
+        is_gift_card = product.get("isGiftCard")
+        is_jersey = product.get("isJersey")
+        is_launch = product.get("isLaunch")
+        is_member_exclusive = product.get("isMemberExclusive")
+        is_nba = product.get("isNBA")
+        is_nfl = product.get("isNFL")
+        is_sustainable = product.get("isSustainable")
+        has_extended_sizing = product.get("hasExtendedSizing")
+        customizable = product.get("customizable")
+        portrait_url = product["images"].get("portraitURL")
+        squarish_url = product["images"].get("squarishURL")
+        url = product.get("url")
 
         yield (
-            date,
             id,
             pid,
             product_id,
@@ -75,5 +71,5 @@ def transform(file):
             search_term,
             portrait_url,
             squarish_url,
-            url,
+            url
         )
