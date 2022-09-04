@@ -38,7 +38,7 @@ def create_table(curr, query):
         print(e)
 
 
-def store_db(connection, curr, query, value):
+def store_db(curr, query, value):
     "Insert data into Database and commit changes"
     try:
         curr.execute(query, value)
@@ -46,6 +46,3 @@ def store_db(connection, curr, query, value):
     except BaseException as e:
         print(e)
 
-    connection.commit()
-    curr.close()
-    connection.close()
