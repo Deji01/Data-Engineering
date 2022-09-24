@@ -125,5 +125,5 @@ def transform(file):
             instant_ship_lowest_price_cents_krw,
             instant_ship_lowest_price_cents_aud,
             image_url,
-            used_image_url,
+            used_image_url
         )

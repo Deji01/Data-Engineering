@@ -1,6 +1,6 @@
 import glob
 from process_data import transform
-from goat.sql_query import create_table_query, insert_data_query
+from sql_query import create_table_query, insert_data_query
 from utils.postgres_db import create_connection, create_table, store_db
 
 
