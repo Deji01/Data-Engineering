@@ -14,7 +14,7 @@ Click the links below to see the various data engineering solutions I explored.
 - [Scrapy Cloud](https://github.com/Deji01/scrapy-scrapeops)
 
 ### Dashboard
-[Streamlit](https://github.com/Deji01/streamlit-dash){:target="_blank"}
+[Streamlit](https://github.com/Deji01/streamlit-dash/?target=_blank)
 
 ### To-Do
 Create univariate or multivariate time-series machine learning models to predict sneaker prices and serve through an API using Django Rest Framework or FastAPI.
