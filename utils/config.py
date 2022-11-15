@@ -1,7 +1,9 @@
-import os
+from kaggle_secrets import UserSecretsClient
 
-db_host = os.environ["DB_HOST"]
-db_name = os.environ["DB_NAME"]
-db_password = os.environ["DB_PASSWORD"]
-db_port = os.environ["DB_PORT"]
-db_user = os.environ["DB_USER"]
+user_secrets = UserSecretsClient()
+
+db_host = user_secrets.get_secret("DB_HOST")
+db_name = user_secrets.get_secret("DB_NAME")
+db_password = user_secrets.get_secret("DB_PASSWORD")
+db_port = user_secrets.get_secret("DB_PORT")
+db_user = user_secrets.get_secret("DB_USER")
