@@ -1,0 +1,21 @@
+symbol,name,icon_small,icon_large
+BTC,Bitcoin,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/btc.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/btc.png
+ETH,Ethereum,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/eth.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/eth.png
+BNB,Binance Coin,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/bnb.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/bnb.png
+XRP,XRP,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/xrp.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/xrp.png
+ADA,Cardano,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/ada.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/ada.png
+DOGE,Dogecoin,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/doge.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/doge.png
+MATIC,Polygon,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/matic.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/matic.png
+LTC,Litecoin,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/ltc.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/ltc.png
+DOT,Polkadot,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/dot.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/dot.png
+SOL,Solana,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/sol.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/sol.png
+TRX,Tron,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/trx.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/trx.png
+SHIB,Shiba Inu,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/shib.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/shib.png
+UNI,Uniswap,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/uni.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/uni.png
+AVAX,Avalanche,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/avax.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/avax.png
+LINK,Chainlink,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/link.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/link.png
+ATOM,Cosmos,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/atom.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/atom.png
+XMR,Monero,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/xmr.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/xmr.png
+ETC,Ethereum Classic,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/etc.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/etc.png
+XLM,Stellar,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/xlm.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/xlm.png
+BCH,Bitcoin Cash,https://github.com/spothq/cryptocurrency-icons/blob/master/svg/icon/bch.svg,https://github.com/spothq/cryptocurrency-icons/blob/master/128/icon/bch.png
